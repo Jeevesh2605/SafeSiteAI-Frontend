@@ -265,6 +265,8 @@ import React, { useState, useEffect } from "react";
 import ConfusionMatrixCard from "../components/ConfusionMatrixCard";
 import api from "../api";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import {
   LineChart,
   Line,
@@ -281,10 +283,21 @@ import {
 const API_URL = "http://127.0.0.1:8000/analytics";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [video, setVideo] = useState(null);
   const [videoURL, setVideoURL] = useState("");
   const [analytics, setAnalytics] = useState(null);
   const [loading, setLoading] = useState(false);
+
+   const handleLogout = () => {
+    // remove token and any stored user info
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    // optional: if you stored other state in localStorage, remove them here
+
+    // redirect to login/auth page
+    navigate("/auth"); // or "/login" depending on your routes
+  };
 
   const handleVideoUpload = (event) => {
     const file = event.target.files[0];
@@ -334,6 +347,21 @@ const Dashboard = () => {
 
   return (
     <section className="min-h-screen w-full text-white bg-[radial-gradient(at_center_bottom,_#4b2e02,_#290A51)] px-8 py-10">
+      {/* Navbar */}
+<nav className="w-full flex justify-between items-center mb-10">
+  <div className="flex items-center gap-2">
+    <img src="/logo.svg" alt="SafeSite AI" className="w-8 h-8" />
+    <h3 className="font-semibold text-lg text-white">SafeSite AI Dashboard</h3>
+  </div>
+
+  <button
+    onClick={handleLogout}
+    className="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-fuchsia-600 text-white font-semibold shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] hover:scale-105 transition-all duration-300"
+  >
+    Logout
+  </button>
+</nav>
+
       <div className="max-w-6xl mx-auto space-y-10">
         {/* KPI Row (Dynamic) */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
