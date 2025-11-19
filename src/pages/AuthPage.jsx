@@ -15,12 +15,10 @@ const AuthPage = () => {
 
   const toggleMode = () => setIsLogin(!isLogin);
 
-  // handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -31,7 +29,7 @@ const AuthPage = () => {
         const response = await api.post(
           "/auth/login",
           new URLSearchParams({
-            username: formData.email, // FastAPI expects 'username'
+            username: formData.email,
             password: formData.password,
           }),
           { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
@@ -39,9 +37,12 @@ const AuthPage = () => {
 
         localStorage.setItem("token", response.data.access_token);
         setMessage("✅ Login successful!");
-        navigate("/dashboard");
+
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 100);
       } else {
-        // 🟢 REGISTER
+        // 🟣 REGISTER
         await api.post("/auth/register", {
           username: formData.username,
           email: formData.email,
@@ -58,16 +59,26 @@ const AuthPage = () => {
   };
 
   return (
-    <section className="relative flex items-center justify-center min-h-screen bg-[radial-gradient(at_center_bottom,_#4b2e02,_#290A51)] overflow-hidden">
+    <section className="relative flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 overflow-hidden">
+      {/* Animated glowing background (same as landing page) */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "700ms" }}
+        ></div>
+      </div>
+
       <AnimatedBackground />
 
+      {/* Auth Card */}
       <div
-        className={`relative z-10 w-96 p-8 rounded-2xl backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-700 ${
-          isLogin ? "bg-white/10" : "bg-white/15"
+        className={`relative z-10 w-96 p-8 rounded-3xl backdrop-blur-md border border-orange-500/20 shadow-[0_0_50px_rgba(255,122,0,0.25)] transition-all duration-700 ${
+          isLogin ? "bg-gray-900/70" : "bg-gray-900/60"
         }`}
       >
-        <h2 className="text-xl font-bold text-center text-white mb-6">
-          {isLogin ? "You’re back — Awesome!👋" : "Join SafeSite AI⤵"}
+        <h2 className="text-2xl font-extrabold text-center mb-6 leading-tight bg-gradient-to-r from-orange-400 to-fuchsia-500 bg-clip-text text-transparent">
+          {isLogin ? "Welcome Back 👋" : "Join SafeSite AI"}
         </h2>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -78,7 +89,7 @@ const AuthPage = () => {
               placeholder="Full Name"
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="w-full p-3 rounded-lg bg-gray-800/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 border border-orange-500/20"
             />
           )}
 
@@ -88,7 +99,7 @@ const AuthPage = () => {
             placeholder="Email"
             onChange={handleChange}
             required
-            className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50"
+            className="w-full p-3 rounded-lg bg-gray-800/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 border border-orange-500/20"
           />
 
           <input
@@ -97,34 +108,40 @@ const AuthPage = () => {
             placeholder="Password"
             onChange={handleChange}
             required
-            className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50"
+            className="w-full p-3 rounded-lg bg-gray-800/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 border border-orange-500/20"
           />
 
           {!isLogin && (
             <input
               type="password"
               placeholder="Confirm Password"
-              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="w-full p-3 rounded-lg bg-gray-800/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 border border-orange-500/20"
             />
           )}
 
           <button
             type="submit"
-            className="w-full py-3 rounded-lg bg-linear-to-r from-orange-400 to-pink-500 text-white font-semibold hover:opacity-90 transition"
+            className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 to-fuchsia-600 text-white font-semibold shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] hover:scale-105 transition-all duration-300"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>
         </form>
 
         {message && (
-          <p className="text-center text-white mt-4 text-sm">{message}</p>
+          <p
+            className={`text-center mt-4 text-sm ${
+              message.startsWith("✅") ? "text-green-400" : "text-red-400"
+            }`}
+          >
+            {message}
+          </p>
         )}
 
-        <p className="text-center text-gray-200 text-sm mt-4">
+        <p className="text-center text-gray-300 text-sm mt-4">
           {isLogin ? "Don’t have an account?" : "Already have an account?"}{" "}
           <button
             onClick={toggleMode}
-            className="text-orange-300 hover:underline focus:outline-none"
+            className="text-orange-300 hover:text-fuchsia-400 hover:underline focus:outline-none transition-colors"
           >
             {isLogin ? "Sign up" : "Login"}
           </button>
