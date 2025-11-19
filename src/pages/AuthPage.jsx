@@ -59,7 +59,7 @@ const AuthPage = () => {
   };
 
   return (
-    <section className="relative flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 overflow-hidden">
+    <section className="relative flex items-center justify-center min-h-screen bg-linear-to-b from-gray-900 via-black to-gray-900 overflow-hidden">
       {/* Animated glowing background (same as landing page) */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -77,7 +77,7 @@ const AuthPage = () => {
           isLogin ? "bg-gray-900/70" : "bg-gray-900/60"
         }`}
       >
-        <h2 className="text-2xl font-extrabold text-center mb-6 leading-tight bg-gradient-to-r from-orange-400 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-2xl font-extrabold text-center mb-6 leading-tight bg-linear-to-r from-orange-400 to-fuchsia-500 bg-clip-text text-transparent">
           {isLogin ? "Welcome Back 👋" : "Join SafeSite AI"}
         </h2>
 
@@ -121,7 +121,7 @@ const AuthPage = () => {
 
           <button
             type="submit"
-            className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 to-fuchsia-600 text-white font-semibold shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] hover:scale-105 transition-all duration-300"
+            className="w-full py-3 rounded-lg bg-linear-to-r from-orange-500 to-fuchsia-600 text-white font-semibold shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] hover:scale-105 transition-all duration-300"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>

@@ -153,7 +153,7 @@ const Dashboard = () => {
 
   if (!isAuthenticated) {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900">
+        <div className="min-h-screen flex items-center justify-center bg-linear-to-b from-gray-900 via-black to-gray-900">
           <div className="text-white text-center">
             <RefreshCw className="w-12 h-12 mx-auto mb-4 animate-spin text-orange-400" />
             <p className="text-lg">Loading...</p>
@@ -163,7 +163,7 @@ const Dashboard = () => {
   }
 
   return (
-      <section className="min-h-screen w-full text-white bg-gradient-to-b from-gray-900 via-black to-gray-900 px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <section className="min-h-screen w-full text-white bg-linear-to-b from-gray-900 via-black to-gray-900 px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
         {/* Animated Background */}
         <div className="fixed inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -176,16 +176,16 @@ const Dashboard = () => {
         {/* Navbar */}
         <nav className="relative z-10 w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 mb-8 sm:mb-10 px-6 py-4 bg-gray-900/60 backdrop-blur-xl rounded-full border border-orange-500/20 shadow-[0_0_30px_rgba(255,122,0,0.15)]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-fuchsia-600 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 bg-linear-to-br from-orange-500 to-fuchsia-600 rounded-full flex items-center justify-center shadow-lg">
               <Shield className="w-6 h-6 text-white" />
             </div>
-            <h3 className="font-bold text-xl bg-gradient-to-r from-orange-400 to-fuchsia-500 bg-clip-text text-transparent">
+            <h3 className="font-bold text-xl bg-linear-to-r from-orange-400 to-fuchsia-500 bg-clip-text text-transparent">
               SafeSite AI Dashboard
             </h3>
           </div>
           <button
               onClick={handleLogout}
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-fuchsia-600 text-white font-semibold shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+              className="px-6 py-2.5 rounded-full bg-linear-to-r from-orange-500 to-fuchsia-600 text-white font-semibold shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] hover:scale-105 transition-all duration-300 w-full sm:w-auto"
           >
             Logout
           </button>
@@ -195,11 +195,11 @@ const Dashboard = () => {
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-br from-orange-500/20 to-fuchsia-600/20 p-3 rounded-xl border border-orange-500/30 backdrop-blur-xl">
+              <div className="bg-linear-to-br from-orange-500/20 to-fuchsia-600/20 p-3 rounded-xl border border-orange-500/30 backdrop-blur-xl">
                 <Shield className="w-8 h-8 text-orange-400" />
               </div>
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                <h1 className="text-2xl sm:text-3xl font-bold bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent">
                   SafeSite AI Dashboard
                 </h1>
                 <p className="text-gray-400 text-sm">
@@ -220,7 +220,7 @@ const Dashboard = () => {
           <div className="space-y-8">
             {/* KPI Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl p-5 border border-orange-500/30 backdrop-blur-xl">
+              <div className="bg-linear-to-br from-orange-500/20 to-orange-600/20 rounded-xl p-5 border border-orange-500/30 backdrop-blur-xl">
                 <div className="flex items-center justify-between mb-3">
                   <AlertTriangle className="w-6 h-6 text-orange-400" />
                   <TrendingUp className="w-4 h-4 text-orange-300" />
@@ -230,7 +230,7 @@ const Dashboard = () => {
                 </h2>
                 <p className="text-sm text-orange-200 mt-1">Total Violations</p>
               </div>
-              <div className="bg-gradient-to-br from-fuchsia-500/20 to-fuchsia-600/20 rounded-xl p-5 border border-fuchsia-500/30 backdrop-blur-xl">
+              <div className="bg-linear-to-br from-fuchsia-500/20 to-fuchsia-600/20 rounded-xl p-5 border border-fuchsia-500/30 backdrop-blur-xl">
                 <div className="flex items-center justify-between mb-3">
                   <Clock className="w-6 h-6 text-fuchsia-400" />
                   <Video className="w-4 h-4 text-fuchsia-300" />
@@ -240,7 +240,7 @@ const Dashboard = () => {
                 </h2>
                 <p className="text-sm text-fuchsia-200 mt-1">Alerts Today</p>
               </div>
-              <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-xl p-5 border border-green-500/30 backdrop-blur-xl">
+              <div className="bg-linear-to-br from-green-500/20 to-green-600/20 rounded-xl p-5 border border-green-500/30 backdrop-blur-xl">
                 <div className="flex items-center justify-between mb-3">
                   <CheckCircle className="w-6 h-6 text-green-400" />
                   <Shield className="w-4 h-4 text-green-300" />
@@ -250,7 +250,7 @@ const Dashboard = () => {
                 </h2>
                 <p className="text-sm text-green-200 mt-1">Compliance Rate</p>
               </div>
-              <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-xl p-5 border border-blue-500/30 backdrop-blur-xl">
+              <div className="bg-linear-to-br from-blue-500/20 to-blue-600/20 rounded-xl p-5 border border-blue-500/30 backdrop-blur-xl">
                 <div className="flex items-center justify-between mb-3">
                   <Video className="w-6 h-6 text-blue-400" />
                   <Eye className="w-4 h-4 text-blue-300" />
@@ -347,7 +347,7 @@ const Dashboard = () => {
                         }
                       }}
                       disabled={uploadingVideo}
-                      className="mt-4 bg-gradient-to-r from-orange-500 to-fuchsia-600 hover:from-orange-600 hover:to-fuchsia-700 px-4 py-2 rounded-lg text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 mx-auto shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all"
+                      className="mt-4 bg-linear-to-r from-orange-500 to-fuchsia-600 hover:from-orange-600 hover:to-fuchsia-700 px-4 py-2 rounded-lg text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 mx-auto shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all"
                   >
                     {uploadingVideo ? (
                         <>
@@ -414,7 +414,7 @@ const Dashboard = () => {
                         <div
                             key={idx}
                             onClick={() => setSelectedEvent(event)}
-                            className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-lg overflow-hidden border border-orange-500/20 hover:border-orange-400/50 cursor-pointer transition group"
+                            className="bg-linear-to-br from-gray-800/50 to-gray-900/50 rounded-lg overflow-hidden border border-orange-500/20 hover:border-orange-400/50 cursor-pointer transition group"
                         >
                           <div className="relative h-48 bg-gray-900">
                             {event.presignedAnnotatedImageUrl ||
@@ -438,18 +438,18 @@ const Dashboard = () => {
                                   <Video className="w-12 h-12" />
                                 </div>
                             )}
-                            <div className="absolute top-2 right-2 bg-gradient-to-r from-orange-500 to-fuchsia-600 text-white px-2 py-1 rounded text-xs font-semibold">
+                            <div className="absolute top-2 right-2 bg-linear-to-r from-orange-500 to-fuchsia-600 text-white px-2 py-1 rounded text-xs font-semibold">
                               {event.outlierCount} Alert
                               {event.outlierCount > 1 ? "s" : ""}
                             </div>
                           </div>
                           <div className="p-4">
                             <div className="flex items-center gap-2 mb-2 text-sm text-gray-400">
-                              <Video className="w-4 h-4 flex-shrink-0" />
+                              <Video className="w-4 h-4 shrink-0" />
                               <span className="truncate">{event.videoName}</span>
                             </div>
                             <div className="flex items-center gap-2 mb-3 text-xs text-gray-500">
-                              <Clock className="w-3 h-3 flex-shrink-0" />
+                              <Clock className="w-3 h-3 shrink-0" />
                               <span>Frame {event.frameNumber}</span>
                               <span>•</span>
                               <span>{formatTimestamp(event.timestamp)}</span>
@@ -489,7 +489,7 @@ const Dashboard = () => {
                     >
                       <div className="flex items-center gap-3">
                         <div
-                            className={`w-2 h-2 rounded-full flex-shrink-0 ${getViolationColor(
+                            className={`w-2 h-2 rounded-full shrink-0 ${getViolationColor(
                                 event.outliers?.[0]?.class || "default"
                             )}`}
                         ></div>
@@ -521,7 +521,7 @@ const Dashboard = () => {
               >
                 <div className="p-5 sm:p-6">
                   <div className="flex justify-between items-start mb-6">
-                    <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-orange-400 to-fuchsia-500 bg-clip-text text-transparent">Event Details</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold bg-linear-to-r from-orange-400 to-fuchsia-500 bg-clip-text text-transparent">Event Details</h2>
                     <button
                         onClick={() => setSelectedEvent(null)}
                         className="text-gray-400 hover:text-white text-3xl leading-none"
