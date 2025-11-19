@@ -11,7 +11,7 @@ export default function Navbar(){
       <nav className="flex items-center gap-6 text-gray-200">
         <a href="#docs" className="hover:opacity-90">Docs</a>
         <a href="#demo" className="hover:opacity-90">Demo</a>
-        <a href="#contact" className="hover:opacity-90">Contact</a>
+        <a href="#contact" onClick={() => setOpen(true)} className="hover:opacity-90">Contact</a>
         <Button className="border border-white/20 text-white hover:bg-white hover:text-black">Login</Button>
       </nav>
     </header>
