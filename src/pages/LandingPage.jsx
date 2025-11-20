@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Shield, FileText, Video, Mail } from "lucide-react";
+import ContactPopup from "../components/ContactPopup";
 
 
 // ImageSlider Component
@@ -68,18 +69,6 @@ const ImageSlider = () => {
               ></button>
           ))}
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
 
   );
@@ -87,6 +76,7 @@ const ImageSlider = () => {
 
 export default function Hero() {
   const [backendMessage, setBackendMessage] = useState("");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     // Simulate backend check (optional)
@@ -148,6 +138,7 @@ export default function Hero() {
               <li>
                 <a
                     href="#"
+                    onClick={() => setOpen(true)} 
                     className="text-gray-300 hover:text-white transition-colors flex items-center gap-2"
                 >
                   <Mail className="w-5 h-5" />
@@ -317,7 +308,7 @@ export default function Hero() {
           >
             Try SafeSite AI Now
           </button>
-
+          <ContactPopup open={open} setOpen={setOpen} />
           {/* Footer */}
           <footer className="w-full max-w-6xl mt-auto mb-8">
             <div className="bg-gray-900/60 backdrop-blur-xl rounded-3xl border border-orange-500/20 px-8 py-6">
