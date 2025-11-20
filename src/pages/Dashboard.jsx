@@ -426,11 +426,15 @@ const Dashboard = () => {
                                     }
                                     alt={`Frame ${event.frameNumber}`}
                                     className="w-full h-full object-cover group-hover:scale-105 transition"
+
                                     onError={(e) => {
-                                      e.target.src =
-                                          'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"/>';
-                                      e.target.parentElement.innerHTML =
-                                          '<div class="flex items-center justify-center h-full bg-gray-800 text-gray-500">Image unavailable</div>';
+                                      if (e.target && e.target.parentElement) {
+                                        e.target.style.display = 'none';
+                                        const errorDiv = document.createElement('div');
+                                        errorDiv.className = 'flex items-center justify-center h-full bg-gray-800 text-gray-500';
+                                        errorDiv.textContent = 'Image unavailable';
+                                        e.target.parentElement.appendChild(errorDiv);
+                                      }
                                     }}
                                 />
                             ) : (
